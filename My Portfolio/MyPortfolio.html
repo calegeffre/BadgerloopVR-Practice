@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="shortcut icon" href="Wisco.ico" />
+<title> On Wisconsin </title>
+
+<style>
+
+#top {
+  background-color: #7f1e1e;
+  background-position: 100% 100%;
+  background-repeat:no-repeat;
+}
+
+.quote{
+  margin: auto;
+  width: 60%;
+  border-style: solid;
+  border-size: 20px
+  border-color: solid #73AD21;
+  padding: 10px;
+  color: white;
+}
+.title{
+  margin: auto;
+  width: 70%;
+}
+
+h1 {
+  font-size:40px;
+  font-weight:bold;
+  color:white;
+}
+
+#content {
+  margin-top: 200px;
+  margin: auto;
+  width: 70%;
+
+}
+#aboutMe{
+  margin-top: 200px;
+  margin: auto;
+  width: 70%;
+}
+
+.stretch{
+    width:100%;
+    height:100%;
+}
+.image{
+    margin: 4px 25px;
+}
+.button{
+    background-color: #7f1e1e;
+    border: 2px solid #7f1e1e;
+    border-radius: 8px;
+    color: white;
+    padding: 8px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 25px;
+    -webkit-transition-duration: 0.4s
+    transition-duration: 0.4s;
+    cursor:pointer;
+}
+
+.button1{
+    padding: 8px 20px;
+    border-radius: 8px;
+    background-color: #7f1e1e;
+    color: white;
+    margin: 4px 80px;
+}
+
+.button1:hover {
+    padding: 8px 20px;
+    border-radius: 8px;
+    border: 2px solid #7f1e1e;
+    background-color: white;
+    color: #7f1e1e;
+    margin: 4px 80px;
+}
+
+
+  #myImg{
+      border-radius: 5px;
+      cursor: pointer;
+      transition: 0.3s;
+  }
+
+  #myImg:hover {opacity:0.7;}
+/*
+  .imagemodal{
+      display: none; /* Hidden by default */
+      position: fixed; /* Stay in place */
+      z-index: 1; /* Sit on top */
+      padding-top: 100px; /* Location of the box */
+      left: 0;
+      top: 0;
+      width: 100%; /* Full width */
+      height: 100%; /* Full height */
+      overflow: auto; /* Enable scroll if needed */
+      background-color: rgb(0,0,0); 
+      background-color: rgba(0,0,0,0.9);
+  }
+
+  .imagemodal-content{
+      margin:auto;
+      display:block;
+      width: 80%;
+      max-width:700px;
+  }
+
+  #caption{
+      margin: auto;
+      display: block;
+      width: 80%;
+      max-width:700px;
+      text-align: center;
+      color: #ccc;
+      padding: 10px 0;
+      height: 150px;
+  }
+*/
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    padding-top: 100px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content */
+.modal-content {
+    position: relative;
+    background-color: #fefefe;
+    margin: auto;
+    padding: 0;
+    border: 1px solid #888;
+    width: 80%;
+    box-shadow: 0 4px 8px  0 rgba(0,0,0,0.2),
+                0 6px 20px 0 rgba(0,0,0,0.19);
+                -webkit-animation-name: animatetop;
+                -webkit-animation-duration: 0.4s;
+                animation-name: animatetop;
+                animation-duration: 0.4s               
+}
+
+/* Add Animation */
+@-webkit-keyframes animatetop{
+  from {top:-300px; opacity:0}
+  to {top:0; opacity:1}
+}
+
+@keyframes animatetop{
+  from {top:-300px; opacity:0}
+  to {top:0; opacity:1}
+}
+/*
+.imagemodal-content, #imagecaption{
+    -webkit-animation-name: zoom;
+    -webkit-animation-duration: 0.6s;
+    animation-name: zoom;
+    animation-duration: 0.6s;
+}*/
+@-webkit-keyframes zoom {
+    from {-webkit-transform:scale(0)}
+    to {-webkit-transform:scale(1)}
+}
+@keyframes zoom {
+    from {transform:scale(0)}
+    to {transform:scale(1)}
+}
+
+
+/* The Close Button */
+.close {
+    color: white;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+/*
+.imageclose{
+    position: absolute;
+    top: 15px;
+    right: 35px;
+    color: #f1f1f1;
+    font-size: 40px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+.imageclose:hover,
+.imageclose:focus {
+    color: #bbb;
+    text-decoration: none;
+    cursor: pointer;
+}
+*/
+@media only screen and (max-width:700px){ .imagemodal-content{width:100%;}}
+
+.modal-header{
+  padding: 2px 16px;
+  background-color: #7f1e1e;
+  color: white;
+}
+
+.modal-body {padding: 2px 16px;}
+
+.modal-footer {
+  padding: 2px 16px;
+  background-color: #7f1e1e;
+  color: white;
+}
+</style>
+</head>
+
+<body>
+<div id="top">
+  <br/><br/>
+  <div class="quote">
+    <h3>"Everybody in this country should learn how to program a
+         computer... because it teaches you how to think" - Steve Jobs</h3>
+  </div>
+  
+  <br/><br/><br/><br/><br/><br/><br/><br/><br/>
+
+  <div class="title">
+    <h1>Cale Geffre's Online Portfolio</h1>
+  </div>
+  <br/>
+
+
+</div>
+
+<div id="aboutMe">
+
+<br/>
+
+<h2>About Me</h2>
+<img src="images/Cale-Geffre.png"style="float:left;width:80px">
+<p>I am a 3rd year student studying computer engineering at UW-Madison. I created this online portfolio
+from scratch as a way to learn the basics of HTML, Javascript and CSS. It has been designed to give a quick
+overview of the experiences I have made to quickly display my skills, interests and abilities. </p>
+
+<input type="button" value="My Resume" onClick="resume()">
+
+<form target="_blank" action="http://linkedin.com/in/calegeffre">
+  <input type="submit" value="LinkedIn" />
+</form>
+
+</div>
+
+<br/><br/><br/>
+
+<div id="content">
+<h2>Experiences</h2>
+
+<img class="image"src="images/lel.png"style="width:250px">
+<img class="image"src="images/Seagate.jpg"style="width:250px">
+<img class="image"src="images/badgerloop.png"style="width:200px"><br/>
+
+
+<button class="button button1"id="vizButton">vizHome Project</button>
+<div id="vizModal" class="modal">
+  <div class="modal-content">
+    <div class="modal-header">
+      <span class ="close">X</span>
+      <h2>Undergraduate Programmer</h2>
+      <p>August 2015 - May 2016, August 2016 - Present</p>
+    </div>
+    <div class="modal-body">
+      <p>
+      Currently, I work as a student programmer for the vizHOME project here in Madison. 
+      This project is a part of the <a target="_blank"href="http://www.wid.wisc.edu/research/lel"> 
+      Living Environments Lab</a>, a virtual reality lab located at the Wisconsin Institute
+      for Discovery. It focuses on assessing peoples personal health information management 
+      using virtual reality to simulate home environments. We have 20 point cloud models of 
+      real homes that were collected using a lidar scanner. I work on improving the efficiency 
+      of the pipeline from lidar scan data to point cloud models that can be represented in our 
+      virtual reality CAVE.
+      </p>
+      <p>
+      I also assist with the research in a technical role, helping participants get comfortable
+      with navigation in our CAVE and executing various experiments and scenarios.
+      </p>
+      
+    </div>
+    <div class="modal-footer"></div>
+  </div>
+</div>
+
+<button class="button button1"id="seaButton">Seagate</button>
+<div id="seaModal" class="modal">
+  <div class="modal-content">
+    <div class = "modal-header">
+      <span class="close">X</span>
+      <h2>Firmware and Data Reliability Intern</h2>
+      <p>May 2016 - August 2016</p>
+    </div>
+    <div class = "modal-body">
+      <p>
+      This past summer I interned at Seagate, a world leader in computer
+      memory, working in their firmware division. My accomplishments included:
+      
+      <ul>
+        <li>Sucessfully debugging issues and submitting changes to firmware code to fix 
+        bugs in reliability systems.</li>
+        <li>Creation of a robust simulation of a data reliability system to look at the 
+        benefits of potential features or code changes to help assist in decisions.</li>
+        <li>Creation of python tools for team members to quickly parse through 
+        and gain access to specific drive information.</li>
+      </ul>
+      </p>
+      <p> Talk is cheap, show me what his manager had to say about him </p>
+      <img src="images/ManagerReview.jpg"style="width:200px">
+      <input type="button" value="View Full Performance Review Doc" onClick="perfReview()">
+    </div>
+    <div class="modal-footer"></div>
+  </div>
+</div>
+ 
+<button class="button button1"id="loopButton">Badgerloop VR</button>
+<div id="loopModal" class="modal">
+  <div class="modal-content">
+    <div class = "modal-header">
+      <span class="close">X</span>
+      <h2>Badgerloop VR Team Member</h2>
+      <p>October 2016 - Present</p>
+    </div>
+    <div class = "modal-body">
+      <p>
+      Working with the Badgerloop team in creating various virtual reality experiments
+      to showcase the hyperloop technology being created here at UW.      
+      </p>
+      <p>
+      ** Under Construction, More Coming Soon! **
+      </p>
+    </div>
+    <div class="modal-footer"></div>
+  </div>
+</div>
+
+<br/><br/><br/><br/>
+
+
+<h2>Project Showcase</h2>
+
+<img id="notecard" src="images/NotecardApp.JPG"alt="Google Cardboard App"width="200"height="200">
+<div id="notecardModal" class="imagemodal">
+  <span class="close">x</span>
+  <img class="modal-content" id="img01">
+  <div id="notecardCaption"></div>
+</div>
+
+
+<img onclick="huskieHack()"src="images/WifiCar.JPG"style="width:200px;height:200px">
+<img onclick="spottedCow()"src="images/SpottedCowPreview.jpeg"style="width:200px;height:200px">
+<img onclick="galaxyConflicts()"src="images/GalaxyConflicts.PNG"style="width:200px;height:200px">
+<img onclick="bopIt()"src="images/BopIt.JPG"style="width:200px;height:200px">
+<img onclick="wiscoTable()"src="images/Table2Preview.jpeg"style="width:200px;height:200px">
+<img onclick="asparagus()"src="images/AsparagusModel.JPG"style="width:200px;height:200px">
+
+</div>
+<script>
+
+var notecard = document.getElementById("notecard");
+var notecardModalImg = document.getElementById("img01");
+var captionText = document.getElementById("notecardCaption");
+
+notecard.onclick = function() {
+    imagemodal.style.display ="block";
+    notecardModalImg.src = this.src;
+    captionText.innerHTML = this.alt;
+}
+
+var notecardSpan = document.getElementByClassName("close")[0];
+noteCardSpan.onclick = funcion(){  imagemodal.style.display = "none"; }
+
+function resume(){window.open('files/CaleGeffre_Resume.pdf');}
+function perfReview(){window.open('files/SeagatePerformance.pdf');}
+
+var vizModal = document.getElementById('vizModal');
+var vizBtn = document.getElementById("vizButton");
+var vizSpan = document.getElementsByClassName("close")[0];
+                  
+vizBtn.onclick = function() {vizModal.style.display = "block";}
+vizSpan.onclick = function() {vizModal.style.display = "none";}
+  
+var seaModal = document.getElementById('seaModal');
+var seaBtn = document.getElementById("seaButton");
+var seaSpan = document.getElementsByClassName("close")[0];
+
+seaBtn.onclick = function() {seaModal.style.display = "block";}
+seaSpan.onclick = function() {seaModal.style.display = "none";}
+
+var loopModal = document.getElementById('loopModal');
+var loopBtn = document.getElementById('loopButton');
+var loopSpan = document.getElementsByClassName("close")[0];
+
+loopBtn.onclick = function() { loopModal.style.display = "block"; }
+loopSpan.onclick = function() { loopModal.style.display = "none"; }
+
+window.onclick = function(event) {
+    if (event.target == vizModal) {
+        vizModal.style.display = "none";
+    }
+    if (event.target == seaModal) {
+        seaModal.style.display = "none";
+    }
+    if (event.target == loopModal){
+        loopModal.style.display = "none";
+    }
+}
+
+</script>
+
+</body>
+</html>
